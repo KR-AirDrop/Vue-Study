@@ -18,43 +18,11 @@
       모달창열렸니 = true;
       clickroom = $event;
     "
+    @increaseReport="onerooms[i].report++"
     :oneroom="onerooms[i]"
     v-for="(a, i) in onerooms"
     :key="i"
   />
-  <!-- <div v-for="(data, i) in onerooms" :key="i">
-    <img :src="data.image" class="room-img" />
-    <h3
-      @click="
-        모달창열렸니 = true;
-        clickroom = i;
-      "
-    >
-      {{ data.title }}
-    </h3>
-    <p>월 {{ data.price }}</p>
-     <button @click="data.report++">허위매물 신고</button>
-    <span> 신고 : {{ data.report }} </span>
-  </div> -->
-
-  <!-- 
-  <div>
-    <img src="./assets/room1.jpg" class="room-img" />
-
-    <h4>{{ products[1] }}</h4>
-    <p>700 만원</p>
-    <button @click="increase(1)">허위매물 신고</button>
-    <span> 신고 : {{ report[1] }} </span>
-  </div>
-
-  <div>
-    <img src="./assets/room2.jpg" class="room-img" />
-
-    <h4>{{ products[2] }}</h4>
-    <p>900 만원</p>
-    <button @click="increase(2)">허위매물 신고</button>
-    <span> 신고 : {{ report[2] }} </span>
-  </div> -->
 </template>
 
 <script>
