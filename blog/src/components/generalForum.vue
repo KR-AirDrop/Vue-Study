@@ -2,7 +2,9 @@
   <div>
     <h2>자유게시판</h2>
     <div v-for="(a, i) in generalPost" :key="i">
-      <h4>{{ a.title }}</h4>
+      <h4 @click="$router.push(`/detail/${i}`)" class="postTitle">
+        {{ a.title }}
+      </h4>
       <p>D-day : {{ a.date }}</p>
     </div>
   </div>
@@ -17,4 +19,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.postTitle {
+  cursor: pointer;
+}
+</style>
