@@ -1,14 +1,17 @@
 <template>
-  <div class="post">
+  <div class="post" v-if="vuestaData">
     <div class="post-header">
       <div class="profile"></div>
-      <span class="profile-name">{{ vuestaData[0].name }}</span>
+      <span class="profile-name">{{ vuestaData[index].name }}</span>
     </div>
     <div class="post-body"></div>
     <div class="post-content">
-      <p>43 Likes</p>
-      <p><strong>글쓴이아이디</strong> 임시내용</p>
-      <p class="date">May 15</p>
+      <p>{{ vuestaData[index].likes }}</p>
+      <p>
+        <strong>{{ vuestaData[index].name }}</strong>
+        {{ vuestaData[index].content }}
+      </p>
+      <p class="date">{{ vuestaData[index].date }}</p>
     </div>
   </div>
 </template>
@@ -18,6 +21,7 @@ export default {
   name: "Post",
   props: {
     vuestaData: Array,
+    index: Number,
   },
 };
 </script>
