@@ -9,7 +9,11 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :vuestaData="vuestaData" />
+  <button @click="step = 0">List</button>
+  <button @click="step = 1">Filter</button>
+  <button @click="step = 2">Post</button>
+
+  <Container :vuestaData="vuestaData" :step="step" />
   <button @click="more">더보기</button>
 
   <div class="footer">
@@ -31,6 +35,7 @@ export default {
     return {
       vuestaData: vuestaData,
       moreCount: 0,
+      step: 0,
     };
   },
   components: {
