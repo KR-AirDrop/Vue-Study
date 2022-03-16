@@ -1,10 +1,11 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li v-if="step != 0" @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">Publish</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -13,12 +14,19 @@
   <button @click="step = 1">Filter</button>
   <button @click="step = 2">Post</button>
 
-  <Container :vuestaData="vuestaData" :step="step" />
-  <button @click="more">더보기</button>
+  <Container
+    @write="uploadContent = $event"
+    :vuestaData="vuestaData"
+    :step="step"
+    :uploadImgUrl="uploadImgUrl"
+  />
+  <div v-if="step == 0">
+    <button @click="more">더보기</button>
+  </div>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -36,12 +44,34 @@ export default {
       vuestaData: vuestaData,
       moreCount: 0,
       step: 0,
+      uploadImgUrl: "",
+      uploadContent: "",
     };
   },
   components: {
     Container,
   },
   methods: {
+    publish() {
+      var newPost = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.uploadImgUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.uploadContent,
+        filter: "perpetua",
+      };
+      this.vuestaData.unshift(newPost);
+      this.step = 0;
+    },
+    upload(e) {
+      let file = e.target.files;
+      let imgUrl = URL.createObjectURL(file[0]);
+      this.step = 1;
+      this.uploadImgUrl = imgUrl;
+    },
     more() {
       if (this.moreCount == 0) {
         axios

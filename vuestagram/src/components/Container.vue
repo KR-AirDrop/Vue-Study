@@ -1,23 +1,36 @@
 <template>
-  <div v-if="step == 0">
-    <Post :vuestaData="a" v-for="(a, i) in vuestaData" :key="i" />
-  </div>
-  <!-- 필터선택페이지 -->
-  <div v-if="step == 1">
-    <div class="upload-image"></div>
-    <div class="filters">
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
+  <div>
+    <div v-if="step == 0">
+      <Post :vuestaData="a" v-for="(a, i) in vuestaData" :key="i" />
     </div>
-  </div>
-  <!-- 글작성페이지 -->
-  <div v-if="step == 2">
-    <div class="upload-image"></div>
-    <div class="write">
-      <textarea class="write-box">write!</textarea>
+    <!-- 필터선택페이지 -->
+    <div v-if="step == 1">
+      <div
+        class="upload-image"
+        :style="`background-image:url(${uploadImgUrl})`"
+      ></div>
+      <div class="filters">
+        <div class="filter-1"></div>
+        <div class="filter-1"></div>
+        <div class="filter-1"></div>
+        <div class="filter-1"></div>
+        <div class="filter-1"></div>
+      </div>
+    </div>
+    <!-- 글작성페이지 -->
+    <div v-if="step == 2">
+      <div
+        class="upload-image"
+        :style="`background-image:url(${uploadImgUrl})`"
+      ></div>
+      <div class="write">
+        <textarea
+          @input="$emit('write', $event.target.value)"
+          class="write-box"
+        >
+write!</textarea
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +45,9 @@ export default {
   props: {
     vuestaData: Array,
     step: Number,
+    uploadImgUrl: String,
   },
+  methods: {},
 };
 </script>
 
