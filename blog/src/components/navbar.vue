@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">뽀시래기</a>
+      <a class="navbar-brand" href="/">뽀시래기</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">레이드신청</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">자유게시판</a>
+            <a class="nav-link" href="/general">자유게시판</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">팁게시판</a>
