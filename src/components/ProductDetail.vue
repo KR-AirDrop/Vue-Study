@@ -5,7 +5,7 @@
       <h4>{{ onerooms[clickroom].title }}</h4>
       <p>{{ onerooms[clickroom].content }}</p>
       <p>월 {{ onerooms[clickroom].price }}</p>
-      <input v-model="month" />
+      <input v-model.lazy="month" />
       <!--  @input="month = $event.target.value" -->
       <p>{{ month }}개월, 총 {{ onerooms[clickroom].price * month }}원</p>
 
@@ -19,7 +19,7 @@ export default {
   name: "ProductDetail",
   data() {
     return {
-      month: 1,
+      month: 3,
     };
   },
   watch: {
@@ -27,7 +27,7 @@ export default {
       const reg = /[^0-9]/g;
       if (reg.test(this.month) === true) {
         alert("숫자만 넣으셈");
-        this.month = 1;
+        this.month = 3;
       }
     },
   },
@@ -35,6 +35,13 @@ export default {
     onerooms: Array,
     clickroom: Number,
     모달창열렸니: Boolean,
+  },
+
+  beforeUpdate() {
+    if (this.month <= 2) {
+      alert("3개월 이상부터 됩니다~");
+      this.month = 3;
+    }
   },
 };
 </script>

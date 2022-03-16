@@ -14,7 +14,9 @@
   </div>
 
   <transition name="fade">
-    <DiscountModal v-if="showDiscount == true" />
+    <div class="discount" v-if="showDiscount == true">
+      <h2>지금 결제하면 {{ discountRate }}% 할인 !!!</h2>
+    </div>
   </transition>
 
   <button @click="priceSort">낮은가격순</button>
@@ -36,7 +38,6 @@
 
 <script>
 import data from "./assets/oneroom";
-import DiscountModal from "./components/DiscountModal.vue";
 import ProductDetail from "./components/ProductDetail.vue";
 import CardList from "./components/CardList.vue";
 
@@ -53,6 +54,7 @@ export default {
       clickroom: 0,
       모달창열렸니: false,
       showDiscount: true,
+      discountRate: 30,
     };
   },
   methods: {
@@ -92,11 +94,13 @@ export default {
   mounted() {
     setTimeout(() => {
       this.showDiscount = false;
-    }, 3000);
+    }, 30000);
+    setInterval(() => {
+      this.discountRate--;
+    }, 1000);
   },
 
   components: {
-    DiscountModal,
     ProductDetail,
     CardList,
   },
@@ -144,6 +148,13 @@ div {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .room-img {
