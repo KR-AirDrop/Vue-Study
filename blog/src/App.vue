@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import navBar from "./components/navbar.vue";
+import navbar from "./components/navbar.vue";
 import generalPost from "./assets/generalPost";
 
 export default {
@@ -18,7 +18,7 @@ export default {
     };
   },
   components: {
-    navbar: navBar,
+    navbar,
   },
 };
 </script>
