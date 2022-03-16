@@ -1,17 +1,23 @@
 <template>
-  <div class="post" v-if="vuestaData">
+  <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
-      <span class="profile-name">{{ vuestaData[index].name }}</span>
+      <div
+        class="profile"
+        :style="{ backgroundImage: `url(${vuestaData.userImage})` }"
+      ></div>
+      <span class="profile-name">{{ vuestaData.name }}</span>
     </div>
-    <div class="post-body"></div>
+    <div
+      class="post-body"
+      :style="{ backgroundImage: `url(${vuestaData.postImage})` }"
+    ></div>
     <div class="post-content">
-      <p>{{ vuestaData[index].likes }}</p>
+      <p>{{ vuestaData.likes }}</p>
       <p>
-        <strong>{{ vuestaData[index].name }}</strong>
-        {{ vuestaData[index].content }}
+        <strong>{{ vuestaData.name }}</strong>
+        {{ vuestaData.content }}
       </p>
-      <p class="date">{{ vuestaData[index].date }}</p>
+      <p class="date">{{ vuestaData.date }}</p>
     </div>
   </div>
 </template>
@@ -20,7 +26,7 @@
 export default {
   name: "Post",
   props: {
-    vuestaData: Array,
+    vuestaData: Object,
     index: Number,
   },
 };

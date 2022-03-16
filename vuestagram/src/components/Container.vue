@@ -1,7 +1,5 @@
 <template>
-  <div v-for="(a, i) in vuestaData" :key="i">
-    <Post :vuestaData="vuestaData" :index="i" />
-  </div>
+  <Post :vuestaData="a" v-for="(a, i) in vuestaData" :key="i" />
 </template>
 
 <script>
