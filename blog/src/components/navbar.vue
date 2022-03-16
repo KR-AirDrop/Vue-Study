@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">홈</a>
+            <a class="nav-link active" aria-current="page" href="/">홈</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">레이드신청</a>

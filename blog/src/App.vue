@@ -1,7 +1,8 @@
 <template>
   <navbar />
-
-  <router-view :generalPost="generalPost"></router-view>
+  <div class="container mt-4">
+    <router-view :generalPost="generalPost"></router-view>
+  </div>
   <!-- <generalForum :generalPost="generalPost" /> -->
 </template>
 
