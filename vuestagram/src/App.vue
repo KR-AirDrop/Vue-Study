@@ -46,7 +46,13 @@ export default {
       step: 0,
       uploadImgUrl: "",
       uploadContent: "",
+      filter: "",
     };
+  },
+  mounted() {
+    this.emitter.on("filter", (filter) => {
+      this.filter = filter;
+    });
   },
   components: {
     Container,
@@ -63,6 +69,7 @@ export default {
         content: this.uploadContent,
         filter: "perpetua",
       };
+      newPost.filter = this.filter;
       this.vuestaData.unshift(newPost);
       this.step = 0;
     },

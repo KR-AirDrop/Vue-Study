@@ -7,6 +7,7 @@
     <div v-if="step == 1">
       <div
         class="upload-image"
+        :class="filter"
         :style="`background-image:url(${uploadImgUrl})`"
       ></div>
       <div class="filters">
@@ -22,6 +23,7 @@
     <div v-if="step == 2">
       <div
         class="upload-image"
+        :class="filter"
         :style="`background-image:url(${uploadImgUrl})`"
       ></div>
       <div class="write">
@@ -71,7 +73,13 @@ export default {
         "willow",
         "xpro2",
       ],
+      filter: "",
     };
+  },
+  mounted() {
+    this.emitter.on("filter", (filter) => {
+      this.filter = filter;
+    });
   },
   components: {
     Post,

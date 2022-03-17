@@ -3,7 +3,7 @@
     :class="filter + ' filter-item'"
     :style="`background-image: url(${uploadImgUrl}) `"
   >
-    <span class="filter-name">{{ filter }}</span>
+    <span class="filter-name" @click="fire">{{ filter }}</span>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   props: {
     uploadImgUrl: String,
     filter: String,
+  },
+  methods: {
+    fire() {
+      this.emitter.emit("filter", this.filter);
+    },
   },
 };
 </script>
@@ -35,5 +40,6 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 3px;
   border-radius: 5px;
+  cursor: pointer;
 }
 </style>
