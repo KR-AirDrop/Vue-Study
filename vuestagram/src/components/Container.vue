@@ -10,11 +10,12 @@
         :style="`background-image:url(${uploadImgUrl})`"
       ></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          :uploadImgUrl="uploadImgUrl"
+          :filter="filter"
+          v-for="(filter, i) in filterData"
+          :key="i"
+        />
       </div>
     </div>
     <!-- 글작성페이지 -->
@@ -37,10 +38,44 @@ write!</textarea
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
 export default {
   name: "Container",
+  data() {
+    return {
+      filterData: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+    };
+  },
   components: {
     Post,
+    FilterBox,
   },
   props: {
     vuestaData: Array,
