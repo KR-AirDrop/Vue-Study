@@ -10,9 +10,11 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <button @click="step = 0">List</button>
-  <button @click="step = 1">Filter</button>
-  <button @click="step = 2">Post</button>
+  <p>age: {{ $store.state.age }}</p>
+  <button @click="$store.commit('plusAge')">age+1</button>
+
+  <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기 버튼</button>
 
   <Container
     @write="uploadContent = $event"
