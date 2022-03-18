@@ -13,7 +13,6 @@
       :style="{ backgroundImage: `url(${vuestaData.postImage})` }"
     ></div>
     <div class="post-content">
-      <button>likes</button>
       <p>{{ vuestaData.likes }}</p>
       <p>
         <strong>{{ vuestaData.name }}</strong>
